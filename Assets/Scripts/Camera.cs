@@ -34,10 +34,10 @@ public class Camera : MonoBehaviour
             Vector3 rotation = new Vector3(move_y, 0, 0);
             Vector3 prev_rotation = transform.rotation.eulerAngles;
             transform.Rotate(rotation);
-            if (transform.rotation.eulerAngles.x > 0 && transform.rotation.eulerAngles.x < 180)
-            {
-                transform.rotation = Quaternion.Euler(prev_rotation);
-            }
+            //if (transform.rotation.eulerAngles.x > 0 && transform.rotation.eulerAngles.x < 180)
+            //{
+            //    transform.rotation = Quaternion.Euler(prev_rotation);
+            //}
         }
     }
 }
