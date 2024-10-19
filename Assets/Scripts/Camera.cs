@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class Camera : MonoBehaviour
 {
+
+    float _localRoation = 0;
+
+    [SerializeField]
+    float cameraSpeed = 1;
+
     enum Rotation
     {
         X,
@@ -31,13 +37,11 @@ public class Camera : MonoBehaviour
         else if(rot == Rotation.X)
         {
             float move_y = Input.GetAxis("Mouse Y");
-            Vector3 rotation = new Vector3(move_y, 0, 0);
-            Vector3 prev_rotation = transform.rotation.eulerAngles;
-            transform.Rotate(rotation);
-            //if (transform.rotation.eulerAngles.x > 0 && transform.rotation.eulerAngles.x < 180)
-            //{
-            //    transform.rotation = Quaternion.Euler(prev_rotation);
-            //}
+            _localRoation += move_y * cameraSpeed * Time.deltaTime;
+            _localRoation = Mathf.Clamp(_localRoation, -80, 80);
+
+            Vector3 rotation = new Vector3(_localRoation, 0, 0);
+            transform.localRotation = Quaternion.Euler(rotation);
         }
     }
 }
