@@ -16,13 +16,19 @@ public class Bullet : MonoBehaviour
     void Update()
     {
         _timeDelta += Time.deltaTime;
-        if (_timeDelta > 10) Destroy(gameObject);
 
         transform.LookAt(transform.position + _rb.velocity);
+        if (_timeDelta > 10) Destroy(gameObject);
     }
 
     private void OnCollisionEnter(Collision collision)
     {
+        GameObject go = collision.gameObject;
+        HitReactionBase hr = go.GetComponent<HitReactionBase>();
+        if (hr)
+        {
+            hr.OnHit();
+        }
         Destroy(gameObject);
     }
 }
