@@ -14,6 +14,9 @@ public class HitReactionProp : HitReactionBase
 
     public override void OnHit()
     {
+        int score = int.Parse(text.text.Split(' ')[1]);
+        score += 1;
+        text.text = $"Score: {score}";
         _rb.useGravity = true;
         _rb.AddForce(Vector3.up * 10, ForceMode.Impulse);
     }

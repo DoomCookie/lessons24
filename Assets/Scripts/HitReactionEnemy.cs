@@ -21,6 +21,9 @@ public class HitReactionEnemy : HitReactionBase
     }
     public override void OnHit()
     {
+        int score = int.Parse(text.text.Split(' ')[1]);
+        score += 5;
+        text.text = $"Score: {score}";
         _mr.material = deadEnemy;
     }
 }
