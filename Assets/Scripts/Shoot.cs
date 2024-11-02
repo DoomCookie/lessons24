@@ -8,6 +8,11 @@ public class Shoot : MonoBehaviour
     Transform bulletSpawn;
     [SerializeField]
     GameObject bullet;
+
+    [SerializeField]
+    int size = 1;
+    [SerializeField]
+    int speed = 100;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,10 +25,11 @@ public class Shoot : MonoBehaviour
         if(Input.GetButtonDown("Fire1"))
         {
             GameObject blt = Instantiate(bullet);
+            blt.transform.localScale *= size;
             blt.transform.position = bulletSpawn.transform.position;
             blt.transform.rotation = bulletSpawn.transform.rotation;
             Rigidbody rbBullet = blt.GetComponent<Rigidbody>();
-            rbBullet.AddForce(blt.transform.forward * 100, ForceMode.Impulse);
+            rbBullet.AddForce(blt.transform.forward * speed, ForceMode.Impulse);
             
         }
     }
