@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
 
 public class MapGenerator : MonoBehaviour
 {
@@ -11,18 +12,9 @@ public class MapGenerator : MonoBehaviour
     [SerializeField]
     float CellWidth, CellHeight;
 
-    string[] map = {
-        "##########",
-        "#...@....#",
-        "#.########",
-        "#.########",
-        "#........#",
-        "########.#",
-        "#........#",
-        "#.########",
-        "#........#",
-        "##########"
-        };
+    [SerializeField]
+    string mapPath;
+    string[] map;
 
     Dictionary<char, GameObject> mapper;
 
@@ -30,6 +22,8 @@ public class MapGenerator : MonoBehaviour
     void Start()
     {
         mapper = new Dictionary<char, GameObject> { { '#', Wall }, { '@', Player }, { '.', null } };
+        StreamReader sr = new StreamReader(mapPath);
+        map = sr.ReadToEnd().Split("\r\n");
         for( int i = 0; i < map.Length; ++i)
         {
             for(int j = 0; j < map[i].Length; ++j)
