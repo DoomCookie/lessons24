@@ -928,6 +928,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cube (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 8904641501653286687, guid: 574a6b40b4710674ab306deb6bb07c93, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 574a6b40b4710674ab306deb6bb07c93, type: 3}
 --- !u!1001 &780597687
