@@ -2223,7 +2223,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13c5eb2ddadcd4b48b6d8964f40cf956, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 50
   jump_force: 300
   gc: {fileID: 7772467624502996231}
 --- !u!4 &7772467624115449804
@@ -2385,6 +2385,7 @@ GameObject:
   - component: {fileID: 7772467624309839772}
   - component: {fileID: 7772467624309839771}
   - component: {fileID: 7772467624309839774}
+  - component: {fileID: 7772467624309839775}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -2405,13 +2406,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   handPosition: {fileID: 7772467625058199217}
-  Cubes:
-  - {fileID: 4339222741821742733, guid: b30400e3fd4cb8945b8f535ac7ff6449, type: 3}
-  - {fileID: 4782306512898660099, guid: 0a4ac01f857c6264386a71a4a55212a3, type: 3}
-  - {fileID: 526502496322259425, guid: d7a827eaabda20549996d0ceadc626e8, type: 3}
   layerMask:
     serializedVersion: 2
     m_Bits: 1024
+--- !u!114 &7772467624309839775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7772467624309839773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 390a771ea9508324fbad81858babb869, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &7772467624502996230
 Transform:
   m_ObjectHideFlags: 0

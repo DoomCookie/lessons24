@@ -6,6 +6,7 @@ public class Move : MonoBehaviour
 {
     [SerializeField]
     float speed = 5;
+    float speedUp = 1;
     [SerializeField]
     float jump_force = 3;
     Rigidbody rb;
@@ -20,11 +21,20 @@ public class Move : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(Input.GetButtonDown("Run"))
+        {
+            speedUp = 2;
+        }
+        if(Input.GetButtonUp("Run"))
+        {
+            speedUp = 1;
+        }
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
         Vector3 dir = transform.forward * vertical + transform.right * horizontal;
-        dir = dir.normalized * speed * Time.deltaTime;
-        transform.position += dir;
+        dir = dir.normalized * speed * speedUp * Time.deltaTime;
+        rb.MovePosition(transform.position + dir);
+        //transform.position += dir;
 
 
         if(gc.isGround && Input.GetButtonDown("Jump"))
