@@ -13,6 +13,8 @@ public class InteractionSystemMinecraft : MonoBehaviour
     InvertorySystem invertory;
     GameObject selectedItem;
     GameObject objectInHand;
+    float delay = 0.4f;
+    float startAnimation;
 
     GameObject tmpObject;
     // Start is called before the first frame update
@@ -30,7 +32,14 @@ public class InteractionSystemMinecraft : MonoBehaviour
         RaycastHit hit;
         if (Input.GetButtonDown("Fire1") && Physics.Raycast(ray, out hit, 3f, LayerMask.GetMask("Cube")))
         {
-            Destroy(hit.transform.gameObject);
+            Animator animator = objectInHand.GetComponent<Animator>();
+            if(animator && Time.realtimeSinceStartup - startAnimation > delay)
+            {
+                animator.Play("Idle");
+                animator.Play("SwordBit");
+                startAnimation = Time.realtimeSinceStartup;
+            }
+            //Destroy(hit.transform.gameObject);
         }
 
         if (selectedItem != invertory.GetSelectedItem())
@@ -56,6 +65,7 @@ public class InteractionSystemMinecraft : MonoBehaviour
             {
                 
                 tmpObject = Instantiate(invertory.GetSelectedItem());
+                tmpObject.GetComponent<Animator>().enabled = false;
                 
                 Collider tmpCollider = tmpObject.GetComponent<Collider>();
                 tmpCollider.enabled = false;
@@ -101,6 +111,7 @@ public class InteractionSystemMinecraft : MonoBehaviour
                         if (invertory.GetSelectedItem())
                         {
                             GameObject cube = Instantiate(invertory.GetSelectedItem());
+                            cube.GetComponent<Animator>().enabled = false;
                             cube.transform.position = point;
                         }
                     }
